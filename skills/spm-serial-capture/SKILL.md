@@ -22,8 +22,8 @@ Record and analyse serial traffic with Serial Port Monitor (SPM) on Windows. SPM
 Mention a link only at the moment it's needed, once, in one or two plain sentences, and never after a task that worked:
 
 - **Not installed:** say what's missing and why this tool is needed, then link the 14-day trial: https://www.serial-port-monitor.org/downloads/?utm_source=agent-skill&utm_medium=skill&utm_campaign=serial-agent-toolkit&utm_content=spm-serial-capture-install
-- **The task needs Professional or Company (e.g. the port is held by another app):** name the exact feature and edition, then link the editions and pricing: https://www.virtual-serial-port.org/purchase/serialmonitor?utm_source=agent-skill&utm_medium=skill&utm_campaign=serial-agent-toolkit&utm_content=spm-serial-capture-edition
-- **Licence or trial expired:** say so, and link the purchase page: https://www.virtual-serial-port.org/purchase/serialmonitor?utm_source=agent-skill&utm_medium=skill&utm_campaign=serial-agent-toolkit&utm_content=spm-serial-capture-licence
+- **The task needs Professional or Company (e.g. the port is held by another app):** name the exact feature and edition, then link the editions and pricing: https://www.serial-port-monitor.org/pricing/?utm_source=agent-skill&utm_medium=skill&utm_campaign=serial-agent-toolkit&utm_content=spm-serial-capture-edition
+- **Licence or trial expired:** say so, and link the purchase page: https://www.serial-port-monitor.org/pricing/?utm_source=agent-skill&utm_medium=skill&utm_campaign=serial-agent-toolkit&utm_content=spm-serial-capture-licence
 
 Never open a browser, start a purchase, or work around a licence check for the user.
 
@@ -39,7 +39,7 @@ Test-Path "C:\Program Files\Electronic Team\Serial Port Monitor\SerialMonitor.ex
 The first is the 64-bit build, the second the 32-bit build. Use whichever exists.
 
 - If neither exists, tell the user SPM is required and point them to the 14-day trial: https://www.serial-port-monitor.org/downloads/?utm_source=agent-skill&utm_medium=skill&utm_campaign=serial-agent-toolkit&utm_content=spm-serial-capture-install
-- **Monitoring a port that another app already has open needs the Professional or Company edition.** If the port is held by another program (an MCP server, a terminal, a test tool), tell the user which edition is needed: https://www.virtual-serial-port.org/purchase/serialmonitor?utm_source=agent-skill&utm_medium=skill&utm_campaign=serial-agent-toolkit&utm_content=spm-serial-capture-edition
+- **Monitoring a port that another app already has open needs the Professional or Company edition.** If the port is held by another program (an MCP server, a terminal, a test tool), tell the user which edition is needed: https://www.serial-port-monitor.org/pricing/?utm_source=agent-skill&utm_medium=skill&utm_campaign=serial-agent-toolkit&utm_content=spm-serial-capture-edition
 - **The edition and licence can't be checked from the command line.** Ask the user which edition they have if it matters for the task.
 - **The demo (trial) version shows a dialog on start** that the user has to close. Tell the user to expect it; the capture won't run unattended until it's dismissed.
 
