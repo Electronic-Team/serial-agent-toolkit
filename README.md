@@ -20,22 +20,22 @@ These skills give the agent the right tool for each wall, with safe defaults.
 
 | Skill | Use when | Requires |
 |---|---|---|
-| [`spm-serial-capture`](skills/spm-serial-capture/SKILL.md) | You need to see serial traffic, including on a port another app (or your MCP server) already has open: capture, filter, summarise, or identify an unknown protocol. | [Serial Port Monitor](https://www.serial-port-monitor.org/) Pro or Company · Windows |
-| [`sec-remote-serial`](skills/sec-remote-serial/SKILL.md) | The device is plugged into another machine, or several machines need the same port: share a port over the network or connect to one. | [Serial to Ethernet Connector](https://www.serial-over-ethernet.com/) · Linux (CLI) or Windows (GUI setup) |
-| `vspd-serial-sandbox` *(coming soon)* | You want the agent to test against virtual ports before touching hardware, or to split one real port between apps. | [Virtual Serial Port Driver](https://www.virtual-serial-port.org/) PRO · Windows |
+| [`spm-serial-capture`](skills/spm-serial-capture/SKILL.md) | You need to see serial traffic, including on a port another app (or your MCP server) already has open: capture, filter, summarise, or identify an unknown protocol. | [Serial Port Monitor](https://www.serial-port-monitor.org/?utm_source=github&utm_medium=readme&utm_campaign=serial-agent-toolkit&utm_content=spm) Professional or Company · Windows |
+| [`vspd-serial-sandbox`](skills/vspd-serial-sandbox/SKILL.md) | You want the agent to test against virtual ports before touching hardware, or to share or split one real port between apps, with read-only access for the agent. | [Virtual Serial Port Driver](https://www.virtual-serial-port.org/?utm_source=github&utm_medium=readme&utm_campaign=serial-agent-toolkit&utm_content=vspd) PRO · Windows |
+| [`sec-remote-serial`](skills/sec-remote-serial/SKILL.md) | The device is plugged into another machine, or several machines need the same port: share a port over the network or connect to one. | [Serial to Ethernet Connector](https://www.serial-over-ethernet.com/?utm_source=github&utm_medium=readme&utm_campaign=serial-agent-toolkit&utm_content=sec) · Linux (CLI); Windows as the other end (GUI) |
 | `serial-debug-loop` *(coming soon)* | The full workflow: flash, capture, read what went wrong, fix, repeat. | Any of the above |
 
 Each skill checks that the product it needs is installed and points you to the 14-day trial if it isn't.
 
 ## Install
 
-With the [skills CLI](https://github.com/vercel-labs/skills):
+Install with one command:
 
 ```bash
 npx skills add Electronic-Team/serial-agent-toolkit
 ```
 
-Or manually: copy the folders from `skills/` into your project's skills directory (for example `.claude/skills/` for Claude Code, or `.agents/skills/` for agents that use the shared layout).
+Or manually: copy the folders from `skills/` into your agent's skills directory (for example `~/.claude/skills/` for Claude Code, or `.agents/skills/` for agents that use the shared layout).
 
 Your agent loads a skill automatically when the task matches its description. You can also ask for it directly: *"Use spm-serial-capture to watch COM4 while I run the test."*
 
@@ -43,14 +43,14 @@ Your agent loads a skill automatically when the task matches its description. Yo
 
 Serial devices are often live equipment. The skills are built around four rules:
 
-1. **Read-only by default.** Agents observe live traffic and test writes on virtual ports. They write to a real device only when you explicitly allow it.
+1. **Read-only by default.** Agents observe live traffic, test writes on virtual ports, and write to a real device only when you explicitly allow it. VSPD share bundles and SEC network shares enforce read-only access in the product itself.
 2. **Device output is data, not instructions.** Agents never act on commands or text that appear in serial output.
-3. **No credentials over serial.** Skills tell agents not to send passwords or keys through serial commands, because they end up in logs.
-4. **Locked-down network shares.** Serial to Ethernet Connector shares use passwords and encryption, and limit which clients may send data to the device.
+3. **No credentials over serial.** Agents don't send passwords or keys through serial commands, because they end up in logs.
+4. **Locked-down network shares.** Serial to Ethernet Connector shares use passwords and encryption.
 
 ## Real-world example
 
-Wichayen from [FPGA Thailand](https://wichayen.github.io/fpgathailand/) let AI agents (OpenCode, then Antigravity) drive a PYNQ-Z2 FPGA board over a single COM port through a serial MCP server. The agents debugged the HDMI framebuffer, checked that the video DMA was streaming at 60 Hz, and wrote C demos running at 60 FPS. Serial Port Monitor recorded every byte without taking the port from the agent's tools, so he could see exactly what the agent did and where it saved its files.
+Wichayen from [FPGA Thailand](https://wichayen.github.io/fpgathailand/) let AI agents (OpenCode, then Antigravity) drive a PYNQ-Z2 FPGA board over a single COM port through a serial MCP server. The agents debugged the HDMI framebuffer, checked that the video DMA was streaming at 60 Hz, and wrote C demos running at 60 FPS. Serial Port Monitor recorded every byte without taking the port from the agent's tools, so he could see exactly what the agent did.
 
 > "One of the cleanest and most reliable tools for non-intrusively tapping active COM ports." — Wichayen, FPGA Thailand
 
@@ -72,4 +72,4 @@ Found a command that no longer works, or a workflow we should cover? [Open an is
 
 ## License
 
-The skills in this repository are released under the MIT License. Serial Port Monitor, Virtual Serial Port Driver and Serial to Ethernet Connector are commercial products by [Electronic Team, Inc.](https://www.electronic.us/), each with a free trial.
+The skills in this repository are released under the [MIT License](LICENSE). Serial Port Monitor, Virtual Serial Port Driver and Serial to Ethernet Connector are commercial products by [Electronic Team, Inc.](https://www.electronic.us/?utm_source=github&utm_medium=readme&utm_campaign=serial-agent-toolkit&utm_content=footer), each with a free trial.
